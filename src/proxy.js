@@ -97,7 +97,7 @@ module.exports = function proxyPolyfill() {
     // Fail on unsupported traps: Chrome doesn't do this, but ensure that users of the polyfill
     // are a bit more careful. Copy the internal parts of handler to prevent user changes.
     const unsafeHandler = handler;
-    handler = { 'get': null, 'set': null, 'apply': null, 'construct': null };
+    handler = { 'get': null, 'set': null, 'has': null, 'apply': null, 'construct': null };
     for (let k in unsafeHandler) {
       if (!(k in handler)) {
         throw new TypeError(`Proxy polyfill does not support trap '${k}'`);
